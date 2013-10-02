@@ -1,0 +1,7 @@
+*.pyc
+*.DS_Store
+*.sw?
+nohup.out
+static/bundle/
+static/cache/
+static/.webassets-cache/
