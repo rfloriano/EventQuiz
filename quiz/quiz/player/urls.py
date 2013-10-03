@@ -5,5 +5,5 @@ from views import SessionView
 
 urlpatterns = patterns(
     '',
-    url(r'^session/', SessionView.as_view()),
+    url(r'^session/', SessionView.as_view(), name='session'),
 )

@@ -3,6 +3,7 @@
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.shortcuts import redirect
 
 from models import Question, Answer
 
@@ -34,3 +35,7 @@ class GameView(TemplateView):
 
         return HttpResponseRedirect(reverse('game_index'))
 
+    def get(self, request, *args, **kwargs):
+        if not request.session.get('player', False):
+            return redirect('session')
+        return super(GameView, self).get(request, *args, **kwargs)

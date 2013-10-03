@@ -1,5 +1,10 @@
 # Django settings for quiz project.
 
+import os
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+project_file = lambda path: os.path.join(PROJECT_ROOT, path)
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -49,7 +54,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = 'media'
+MEDIA_ROOT = project_file('media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -68,6 +73,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    project_file('static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -104,7 +110,7 @@ ROOT_URLCONF = 'quiz.urls'
 WSGI_APPLICATION = 'quiz.wsgi.application'
 
 TEMPLATE_DIRS = (
-    'templates',
+    project_file('templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -120,6 +126,17 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'quiz.question',
     'quiz.player',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.core.context_processors.request",
+    "django.contrib.messages.context_processors.messages",
 )
 
 # A sample logging configuration. The only tangible logging
