@@ -5,6 +5,7 @@ from views import GameView
 
 urlpatterns = patterns(
     '',
-    url(r'^game/', GameView.as_view()),
+
+    url(r'^game/', GameView.as_view(), name='game_index'),
 )
 

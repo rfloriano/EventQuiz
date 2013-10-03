@@ -1,0 +1,30 @@
+{% load staticfiles %}
+
+{{ ovo }}
+{% if current_question %}
+<h1>{{ current_question.question }}</h1>
+
+<form for="{% url 'game_index' %}" method="post" id="game-session-form">
+{% csrf_token %}
+    <ul>
+        {% for answer in current_question.answer_set.all %}
+        <li>
+            <input class="answer-option" type="radio" name="answer_id" value="{{ answer.id }}" id="answer-{{ answer.id }}" />
+            <label for="answer-{{ answer.id }}">{{ answer.answer }}</label>
+        </li>
+        {% endfor %}
+    </ul>
+</form>
+
+<script type="text/javascript" src="{% static 'js/jquery-2.0.3.js' %}"></script>
+<!--<script type="text/javascript" src="{% static 'js/jquery.mobile-1.3.2.js' %}"></script>-->
+<script type="text/javascript">
+$(function() {
+    $('.answer-option').on('change', function() {
+        $('#game-session-form').get(0).submit();
+    });
+});
+</script>
+{% else %}
+<h1>Fim!!!</h1>
+{% endif %}
