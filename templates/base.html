@@ -10,6 +10,8 @@
         {% endassets %}
     </head>
     <body>
+        {% if current_user() %}<a href="{{ url_for('logout') }}">Logout</a>{% endif %}
+
         {% block content %}
         {% endblock %}
 
