@@ -1,3 +1,5 @@
-<form action="post">
-	<input type="text" name="email" id="id_email" placeholder="Digite seu e-mail"/>
+<form action="{% url 'session' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="email" id="id_email" placeholder="Digite seu e-mail"/>
+    <input type="submit">
 </form>
