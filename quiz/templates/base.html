@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>EventQuiz!</title>
+
+    {% block style %}{% endblock style %}
+
+    {% block script_header %}{% endblock script_header %}
+</head>
+    <body>
+        Welcome {{ request.session.player }}
+
+        {% block content %}{% endblock content %}
+        {% block script %}
+            <script type="text/javascript" src="{% static 'js/jquery-2.0.3.js' %}"></script>
+            <!--<script type="text/javascript" src="{% static 'js/jquery.mobile-1.3.2.js' %}"></script>-->
+        {% endblock script %}
+    </body>
+</html>

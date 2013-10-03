@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from django.conf.urls import patterns, url
-from views import SessionView
+from views import GameView
 
 urlpatterns = patterns(
     '',
-    url(r'^session/', SessionView.as_view(), name='session'),
+    url(r'', GameView.as_view(), name='game_index'),
 )

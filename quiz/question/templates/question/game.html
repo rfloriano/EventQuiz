@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if current_question %}
+        <h1>{{ current_question.question }}</h1>
+
+        <form for="{% url 'game_index' %}" method="post" id="game-session-form">
+            {% csrf_token %}
+            <ul>
+                {% for answer in current_question.answer_set.all %}
+                <li>
+                    <input class="answer-option" type="radio" name="answer_id" value="{{ answer.id }}" id="answer-{{ answer.id }}" />
+                    <label for="answer-{{ answer.id }}">{{ answer.answer }}</label>
+                </li>
+                {% endfor %}
+            </ul>
+        </form>
+    {% else %}
+        <h1>Game over</h1>
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+    {{ block.super }}
+    <script type="text/javascript">
+    $(function() {
+        $('.answer-option').on('change', function() {
+            $('#game-session-form').get(0).submit();
+        });
+    });
+    </script>
+{% endblock script %}

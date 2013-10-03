@@ -8,9 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
-
-    url(r'^player/', include('quiz.player.urls')),
     url(r'^question/', include('quiz.question.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    # url(r'', include('quiz.question.urls')),
+    url(r'^$', include('quiz.player.urls')),
 )
