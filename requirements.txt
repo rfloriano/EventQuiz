@@ -1,5 +1,1 @@
-Flask
-Flask-Assets
-
-jsmin
-cssmin
+django>=1.5
